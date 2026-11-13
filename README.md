@@ -60,7 +60,7 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db
 ### Reproducing a run from scratch
 
 Delete all generated files, including the raw data, and run again. The committed reports
-(`final_report.md`, `architecture.md`) and screenshots in `reports/` are kept:
+(`architecture.md` and the final PDF report) and screenshots in `reports/` are kept:
 
 ```bash
 rm -rf data/raw data/processed data/features data/errors models mlruns mlflow.db
@@ -133,7 +133,7 @@ Notes:
 - The container uses its own MLflow database (`mlflow-airflow.db`, set by `MLFLOW_TRACKING_DB`), because the local `mlflow.db` was created by MLflow 3.x and cannot be read by the MLflow 2.x in the image.
 - `MLFLOW_ENABLE_ASYNC_LOGGING=false` is set in `docker-compose.yml`. Without it, the MLflow training task exited silently inside Airflow's forked worker process.
 - `AIRFLOW__CORE__EXECUTE_TASKS_NEW_PYTHON_INTERPRETER=true` is also set. The DAG file imports MLflow, so the forked task inherited MLflow state from the scheduler and `train_models` exited with code 1 and no traceback. Starting each task in a fresh interpreter fixes this.
-- The Airflow image installs the versions in Airflow's constraints file, which are older than the local pins: pandas 2.1.4, numpy 1.26.4 and MLflow 2.22.5 (local: pandas 3.1.1, numpy 2.5.4, MLflow 3.18.0). Metrics from the Docker run can therefore differ from the local run in the last digits, and the timestamp dtype in the Parquet files differs. The committed reports come from the local environment in `requirements.txt`.
+- The Airflow image installs the versions in Airflow's constraints file, which are older than the local pins: pandas 2.1.4, numpy 1.26.4 and MLflow 2.22.5 (local: pandas 3.1.1, numpy 2.5.4, MLflow 3.18.0). The recorded Airflow run in `mlflow-airflow.db` produced the same metrics as the local run in `mlflow.db`, to full precision. Other machines may still differ in the last digits, and the timestamp dtype in the Parquet files differs. The committed reports come from the local environment in `requirements.txt`.
 
 ## Run tests
 
