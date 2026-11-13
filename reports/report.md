@@ -1,6 +1,10 @@
 # End-to-End Data Management Pipeline for a Recommendation System
 
-**Course:** Data Management for Machine Learning, Assignment 2
+**Assignment 2**
+
+**Name:** KAPIL UNIYARA
+**Bits ID No.:** 2025AG05832
+**Course:** Data Management for Machine Learning
 **GitHub repository:** https://github.com/nij-117-07/recommendation-pipeline (setup and run instructions in README.md)
 
 ## 1. Problem and data
@@ -27,8 +31,8 @@ Stages run in this order, defined once in `src/orchestration/stages.py`:
    user-item matrix.
 5. **Feature management:** user, item and interaction features are computed from the training split only and
    stored in a FeatureStore shared by training and prediction (`reports/feature_catalog.md`).
-6. **Training:** a popularity baseline; a genre content recommender (genre affinity plus popularity); and biased
-   matrix factorization (SGD, 32 factors, 20 epochs). Parameters and metrics are logged to MLflow.
+6. **Training:** a popularity baseline; a genre content recommender (genre affinity plus popularity); and
+   biased matrix factorization (SGD, 32 factors, 20 epochs). Parameters and metrics are logged to MLflow.
 7. **Evaluation:** Precision@10, Recall@10, NDCG@10, coverage, diversity, RMSE and MAE.
 8. **Orchestration:** one stage list drives a plain-Python runner and an Airflow 2.10.5 DAG (Docker,
    PostgreSQL, LocalExecutor).
@@ -71,8 +75,11 @@ cold-start. RMSE and MAE use 2,864 test ratings with known users and items.*
   gave identical metrics, and the Airflow run matched the local run to four decimal places.
 - 15 unit tests cover metrics, validation rules, recommenders, feature logic and DAG ordering. All pass.
 - The plain-Python runner completes all 8 stages in about 30 seconds, including the download.
-- The Airflow DAG (`recommendation_pipeline`) ran all 8 tasks green (`reports/airflow_successful_run.png`).
-  Two settings in `docker-compose.yml` were needed: synchronous MLflow logging, and each task starting in a
+- The Airflow DAG (`recommendation_pipeline`) ran all 8 tasks green.
+
+[INSERT SCREENSHOT: Airflow graph view of the successful run, reports/airflow_successful_run.png]
+
+- Two settings in `docker-compose.yml` were needed: synchronous MLflow logging, and each task starting in a
   fresh interpreter. Without the second, the forked training task exited silently.
 
 ## 6. Limitations
@@ -90,6 +97,8 @@ cold-start. RMSE and MAE use 2,864 test ratings with known users and items.*
 ## 7. Conclusion
 
 The pipeline covers every required stage and runs end to end from one command or from Airflow. Matrix
-factorization is the best rating predictor and covers the most of the catalogue. For top-K ranking on this
-data, the popularity baseline is nearly as good as the hybrid, and both outperform matrix factorization. This
-reflects the time-based split. Genre features add little to ranking on MovieLens.
+factorization is the best rating predictor and covers the most of the catalogue. For top-K ranking on this data,
+the popularity baseline is nearly as good as the hybrid, and both outperform matrix factorization. This reflects
+the time-based split. Genre features add little to ranking on MovieLens.
+
+**GitHub repository:** https://github.com/nij-117-07/recommendation-pipeline

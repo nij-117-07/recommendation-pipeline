@@ -42,7 +42,7 @@ On the first run, `data/raw/` has no CSVs, so the pipeline downloads
 [MovieLens 100K](https://grouplens.org/datasets/movielens/100k/) (943 users, 1,682 movies,
 100,000 ratings) and converts it to the three raw files. This needs internet access once; the zip
 is kept in `data/raw/ml-100k.zip`. The source is set by `source` in `configs/pipeline.json`
-(`"movielens"` or, for a synthetic dataset, remove the key). The run takes about 20 seconds. It produces:
+(`"movielens"` or, for a synthetic dataset, remove the key). The run takes about 30 seconds, including the download. It produces:
 
 - `reports/run_metadata.json`: config hash, seed, `reference_date`, package versions, git commit
 - `reports/validation_report.md`: rule results and row counts
@@ -59,10 +59,13 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db
 
 ### Reproducing a run from scratch
 
-Delete all generated files, including the raw data, and run again:
+Delete all generated files, including the raw data, and run again. The committed reports
+(`final_report.md`, `architecture.md`) and screenshots in `reports/` are kept:
 
 ```bash
-rm -rf data/raw data/processed data/features data/errors models reports mlruns mlflow.db
+rm -rf data/raw data/processed data/features data/errors models mlruns mlflow.db
+rm -f reports/model_results.* reports/validation_report.md reports/validation_summary.json \
+      reports/evaluation_summary.json reports/feature_catalog.md reports/run_log.txt reports/run_metadata.json
 python -m dags.recommendation_pipeline
 ```
 
@@ -80,6 +83,16 @@ pipeline twice from an empty state and comparing `reports/model_results.csv`,
 - `items.csv` from `u.item`. Genres come from the 19 genre flags, joined with `|`. Movies with no
   genre get `unknown`. Release year comes from the release date; one movie has none and is left empty.
 - `interactions.csv` from `u.data`. Unix timestamps are converted to ISO 8601 UTC.
+
+### Data source and attribution
+
+MovieLens 100K was collected by GroupLens Research at the University of Minnesota. If you use it in
+a publication, cite:
+
+> F. Maxwell Harper and Joseph A. Konstan. 2015. The MovieLens Datasets: History and Context.
+> ACM Transactions on Interactive Intelligent Systems (TiiS) 5, 4: Article 19.
+
+The license and terms of use are at https://grouplens.org/datasets/movielens/100k/.
 
 ### Using your own data
 
