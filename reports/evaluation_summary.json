@@ -1,0 +1,36 @@
+{
+  "k": 10,
+  "relevance_threshold": 4,
+  "evaluated_users": 786,
+  "cold_start_users": 0,
+  "rating_rows_for_rmse_mae": 10938,
+  "models": {
+    "popularity_baseline": {
+      "precision_at_k": 0.10178117048346055,
+      "recall_at_k": 0.21512682256957066,
+      "ndcg_at_k": 0.2037908420295946,
+      "coverage": 0.08333333333333333,
+      "diversity": 0.8809537272641599,
+      "rmse": 1.1380601010830134,
+      "mae": 0.898844040444306
+    },
+    "genre_content_recommender": {
+      "precision_at_k": 0.10508905852417304,
+      "recall_at_k": 0.22214864934330583,
+      "ndcg_at_k": 0.20722463839348043,
+      "coverage": 0.12878787878787878,
+      "diversity": 0.8654745075864668,
+      "rmse": 1.1405868709797495,
+      "mae": 0.9119001341969759
+    },
+    "biased_matrix_factorization": {
+      "precision_at_k": 0.06017811704834606,
+      "recall_at_k": 0.12312198686244488,
+      "ndcg_at_k": 0.10200381713201351,
+      "coverage": 0.8737373737373737,
+      "diversity": 0.8737489397794741,
+      "rmse": 0.7669778248641813,
+      "mae": 0.6184438671467798
+    }
+  }
+}

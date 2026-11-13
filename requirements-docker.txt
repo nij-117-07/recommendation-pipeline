@@ -1,0 +1,6 @@
+# Installed on top of the Airflow image. Versions are constrained by the Airflow
+# constraints file (see Dockerfile) so they do not break Airflow's dependencies.
+pandas
+numpy
+pyarrow
+mlflow>=2.14,<3

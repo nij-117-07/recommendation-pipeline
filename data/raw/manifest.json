@@ -1,0 +1,14 @@
+{
+  "users.csv": {
+    "rows": 808,
+    "sha256": "1da30a7934f10ab7eaa261cbc4399e4774654367b6a787ba7b50fe8410697458"
+  },
+  "items.csv": {
+    "rows": 404,
+    "sha256": "5fa9cdc31a080b84cd11100e5cdcd3dc07f50685e6b1c3cea2ebc27539057203"
+  },
+  "interactions.csv": {
+    "rows": 60600,
+    "sha256": "16f9ea6347b03cd6ebfcb3c1b956c864297a881743b479a29f25a0265614881b"
+  }
+}

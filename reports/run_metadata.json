@@ -1,0 +1,16 @@
+{
+  "generated_at_utc": "2026-11-13T16:46:43+00:00",
+  "config_sha256": "e1d8364937bcdc9dc1fa0c90df998f24bb7307d4d332fc082ac71014867c2ca5",
+  "random_seed": 42,
+  "reference_date": "2026-01-01T00:00:00Z",
+  "python": "3.12.3",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "packages": {
+    "pandas": "3.1.1",
+    "numpy": "2.5.4",
+    "pyarrow": "26.0.1",
+    "mlflow": "3.18.0",
+    "pytest": "9.2.0"
+  },
+  "git_commit": "48f92aeef20c4e1b59bf06f5033dab437ff635c7"
+}

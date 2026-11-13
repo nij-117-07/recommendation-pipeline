@@ -1,0 +1,31 @@
+{
+  "random_seed": 42,
+  "reference_date": "2026-01-01T00:00:00Z",
+  "synthetic": {
+    "n_users": 800,
+    "n_items": 400,
+    "n_interactions": 60000,
+    "error_rate": 0.01
+  },
+  "validation": {
+    "min_rating": 1,
+    "max_rating": 5
+  },
+  "split": {
+    "test_fraction": 0.2
+  },
+  "relevance_threshold": 4,
+  "top_k": 10,
+  "content": {
+    "popularity_weight": 1.0
+  },
+  "mf": {
+    "n_factors": 32,
+    "epochs": 20,
+    "learning_rate": 0.01,
+    "regularization": 0.05
+  },
+  "mlflow": {
+    "experiment_name": "recommendation-pipeline"
+  }
+}
