@@ -98,7 +98,10 @@ docker compose up -d --build        # first start: build image, migrate DB, crea
 
 Stop the stack with `docker compose down` (add `-v` to also delete Airflow's metadata database).
 
-Screenshot of a successful Airflow run: [`reports/airflow_successful_run.png`](reports/airflow_successful_run.png).
+Screenshots:
+- Successful run, graph view (all 8 tasks green): [`reports/airflow_successful_run.png`](reports/airflow_successful_run.png)
+- DAG overview: [`reports/airflow_dag_overview.png`](reports/airflow_dag_overview.png). The grid also shows earlier development runs that failed before the fixes.
+- Task durations: [`reports/airflow_task_durations.png`](reports/airflow_task_durations.png). `train_models` is the slowest task, at about 8–11 seconds.
 
 Notes:
 - The container uses its own MLflow database (`mlflow-airflow.db`, set by `MLFLOW_TRACKING_DB`), because the local `mlflow.db` was created by MLflow 3.x and cannot be read by the MLflow 2.x in the image.

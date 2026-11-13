@@ -110,7 +110,10 @@ are close to those of the popularity baseline.*
 - `reports/run_metadata.json` records the config hash and package versions for each run.
 - The plain-Python runner completes all 8 tasks in about 10 seconds (`reports/run_log.txt`).
 - The same 8 tasks ran successfully as an Airflow 2.10.5 DAG in Docker (`recommendation_pipeline`,
-  manual run). The DAG and the plain-Python runner share one stage list, so they cannot disagree on order.
+  manual run). The graph view in `reports/airflow_successful_run.png` shows all 8 tasks green. The DAG
+  overview (`reports/airflow_dag_overview.png`) also shows earlier development runs that failed before the
+  fixes. The task-duration chart (`reports/airflow_task_durations.png`) shows that `train_models` is the
+  slowest task. The DAG and the plain-Python runner share one stage list, so they cannot disagree on order.
 - A daily cron example is in the README for scheduled runs.
 
 ## 7. Limitations
