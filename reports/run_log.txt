@@ -1,41 +1,41 @@
-2026-11-13 16:46:43,822 | INFO    | Execution order: record_run_metadata -> ingest_data -> validate_data -> prepare_data -> transform_data -> build_features -> train_models -> evaluate_models
-2026-11-13 16:46:43,822 | INFO    | [record_run_metadata] started (attempt 1)
-2026-11-13 16:46:43,828 | INFO    | Recorded run metadata (config e1d8364937bc)
-2026-11-13 16:46:43,828 | INFO    | [record_run_metadata] success in 0.01s
-2026-11-13 16:46:43,828 | INFO    | [ingest_data] started (attempt 1)
-2026-11-13 16:46:43,829 | INFO    | Using existing raw CSV files in /home/nij/test/recommendation-pipeline/data/raw
-2026-11-13 16:46:43,859 | INFO    | Raw data manifest: {'users.csv': 808, 'items.csv': 404, 'interactions.csv': 60600}
-2026-11-13 16:46:43,859 | INFO    | [ingest_data] success in 0.03s
-2026-11-13 16:46:43,859 | INFO    | [validate_data] started (attempt 1)
-2026-11-13 16:46:44,000 | INFO    | users: 808 raw, 792 valid, 16 rejected
-2026-11-13 16:46:44,001 | INFO    | items: 404 raw, 396 valid, 8 rejected
-2026-11-13 16:46:44,014 | INFO    | interactions: 60600 raw, 54688 valid, 5912 rejected
-2026-11-13 16:46:44,014 | INFO    | [validate_data] success in 0.15s
-2026-11-13 16:46:44,014 | INFO    | [prepare_data] started (attempt 1)
-2026-11-13 16:46:44,055 | INFO    | Prepared data: 43750 train rows, 10938 test rows, cutoff 2024-10-20 05:49:12+00:00, 0 duplicate pairs removed
-2026-11-13 16:46:44,055 | INFO    | [prepare_data] success in 0.04s
-2026-11-13 16:46:44,055 | INFO    | [transform_data] started (attempt 1)
-2026-11-13 16:46:44,137 | INFO    | Transformed data: 792 users, 396 items, matrix density 13.95%
-2026-11-13 16:46:44,137 | INFO    | [transform_data] success in 0.08s
-2026-11-13 16:46:44,137 | INFO    | [build_features] started (attempt 1)
-2026-11-13 16:46:44,235 | INFO    | Stored 792 user, 396 item and 43750 interaction feature rows
-2026-11-13 16:46:44,235 | INFO    | [build_features] success in 0.10s
-2026-11-13 16:46:44,235 | INFO    | [train_models] started (attempt 1)
-2026-11-13 16:46:49,800 | INFO    | Trained popularity_baseline and logged MLflow run ff615ff60009454fa5314c37a2dc38ef
-2026-11-13 16:46:49,827 | INFO    | Trained genre_content_recommender and logged MLflow run d879e4e5a4c24eac8f4a36a6316cafc9
-2026-11-13 16:46:49,941 | INFO    | Trained biased_matrix_factorization and logged MLflow run 965ca89e92d14e879a2d9bc1d8b0f5bc
-2026-11-13 16:46:49,941 | INFO    | [train_models] success in 5.71s
-2026-11-13 16:46:49,941 | INFO    | [evaluate_models] started (attempt 1)
-2026-11-13 16:46:49,967 | INFO    | Evaluating 786 users (0 cold-start) and 10938 rating rows at K=10
-2026-11-13 16:46:50,001 | INFO    | popularity_baseline: {'precision_at_k': 0.1018, 'recall_at_k': 0.2151, 'ndcg_at_k': 0.2038, 'coverage': 0.0833, 'diversity': 0.881, 'rmse': 1.1381, 'mae': 0.8988}
-2026-11-13 16:46:50,046 | INFO    | genre_content_recommender: {'precision_at_k': 0.1051, 'recall_at_k': 0.2221, 'ndcg_at_k': 0.2072, 'coverage': 0.1288, 'diversity': 0.8655, 'rmse': 1.1406, 'mae': 0.9119}
-2026-11-13 16:46:50,166 | INFO    | biased_matrix_factorization: {'precision_at_k': 0.0602, 'recall_at_k': 0.1231, 'ndcg_at_k': 0.102, 'coverage': 0.8737, 'diversity': 0.8737, 'rmse': 0.767, 'mae': 0.6184}
-2026-11-13 16:46:50,232 | INFO    | Logged evaluation metrics to MLflow
-2026-11-13 16:46:50,232 | INFO    | Results:
+2026-11-13 17:31:24,772 | INFO    | Execution order: record_run_metadata -> ingest_data -> validate_data -> prepare_data -> transform_data -> build_features -> train_models -> evaluate_models
+2026-11-13 17:31:24,772 | INFO    | [record_run_metadata] started (attempt 1)
+2026-11-13 17:31:24,778 | INFO    | Recorded run metadata (config ea5ce2301267)
+2026-11-13 17:31:24,778 | INFO    | [record_run_metadata] success in 0.01s
+2026-11-13 17:31:24,778 | INFO    | [ingest_data] started (attempt 1)
+2026-11-13 17:31:24,778 | INFO    | Using existing raw CSV files in /home/nij/test/recommendation-pipeline/data/raw
+2026-11-13 17:31:24,827 | INFO    | Raw data manifest: {'users.csv': 943, 'items.csv': 1682, 'interactions.csv': 100000}
+2026-11-13 17:31:24,827 | INFO    | [ingest_data] success in 0.05s
+2026-11-13 17:31:24,827 | INFO    | [validate_data] started (attempt 1)
+2026-11-13 17:31:25,033 | INFO    | users: 943 raw, 943 valid, 0 rejected
+2026-11-13 17:31:25,036 | INFO    | items: 1682 raw, 1682 valid, 0 rejected
+2026-11-13 17:31:25,048 | INFO    | interactions: 100000 raw, 100000 valid, 0 rejected
+2026-11-13 17:31:25,049 | INFO    | [validate_data] success in 0.22s
+2026-11-13 17:31:25,049 | INFO    | [prepare_data] started (attempt 1)
+2026-11-13 17:31:25,116 | INFO    | Prepared data: 79999 train rows, 20001 test rows, cutoff 1998-03-07 02:21:09+00:00, 0 duplicate pairs removed
+2026-11-13 17:31:25,116 | INFO    | [prepare_data] success in 0.07s
+2026-11-13 17:31:25,116 | INFO    | [transform_data] started (attempt 1)
+2026-11-13 17:31:25,265 | INFO    | Transformed data: 751 users, 1616 items, matrix density 6.59%
+2026-11-13 17:31:25,265 | INFO    | [transform_data] success in 0.15s
+2026-11-13 17:31:25,265 | INFO    | [build_features] started (attempt 1)
+2026-11-13 17:31:25,481 | INFO    | Stored 943 user, 1682 item and 79999 interaction feature rows
+2026-11-13 17:31:25,481 | INFO    | [build_features] success in 0.22s
+2026-11-13 17:31:25,481 | INFO    | [train_models] started (attempt 1)
+2026-11-13 17:31:37,023 | INFO    | Trained popularity_baseline and logged MLflow run dc5c0ee7c13c4714ba2250b2e269eacb
+2026-11-13 17:31:37,052 | INFO    | Trained genre_content_recommender and logged MLflow run c0de10a8fea540e6be98b24ccca2d9ad
+2026-11-13 17:31:37,174 | INFO    | Trained biased_matrix_factorization and logged MLflow run cc86d8a7e10f4994a7b81cf49da83b3e
+2026-11-13 17:31:37,174 | INFO    | [train_models] success in 11.69s
+2026-11-13 17:31:37,175 | INFO    | [evaluate_models] started (attempt 1)
+2026-11-13 17:31:37,210 | INFO    | Evaluating 290 users (192 cold-start) and 2864 rating rows at K=10
+2026-11-13 17:31:37,221 | INFO    | popularity_baseline: {'precision_at_k': 0.2445, 'recall_at_k': 0.0826, 'ndcg_at_k': 0.2703, 'coverage': 0.044, 'diversity': 0.7854, 'rmse': 1.0366, 'mae': 0.833}
+2026-11-13 17:31:37,240 | INFO    | genre_content_recommender: {'precision_at_k': 0.2476, 'recall_at_k': 0.0849, 'ndcg_at_k': 0.274, 'coverage': 0.047, 'diversity': 0.7617, 'rmse': 1.1805, 'mae': 0.9573}
+2026-11-13 17:31:37,274 | INFO    | biased_matrix_factorization: {'precision_at_k': 0.2259, 'recall_at_k': 0.0701, 'ndcg_at_k': 0.2497, 'coverage': 0.0957, 'diversity': 0.7845, 'rmse': 0.9723, 'mae': 0.7671}
+2026-11-13 17:31:37,346 | INFO    | Logged evaluation metrics to MLflow
+2026-11-13 17:31:37,346 | INFO    | Results:
 | Model | Precision@10 | Recall@10 | NDCG@10 | Coverage | Diversity | RMSE | MAE |
 |---|---|---|---|---|---|---|---|
-| popularity_baseline | 0.1018 | 0.2151 | 0.2038 | 0.0833 | 0.8810 | 1.1381 | 0.8988 |
-| genre_content_recommender | 0.1051 | 0.2221 | 0.2072 | 0.1288 | 0.8655 | 1.1406 | 0.9119 |
-| biased_matrix_factorization | 0.0602 | 0.1231 | 0.1020 | 0.8737 | 0.8737 | 0.7670 | 0.6184 |
-2026-11-13 16:46:50,233 | INFO    | [evaluate_models] success in 0.29s
-2026-11-13 16:46:50,233 | INFO    | Workflow summary: {'record_run_metadata': 'success', 'ingest_data': 'success', 'validate_data': 'success', 'prepare_data': 'success', 'transform_data': 'success', 'build_features': 'success', 'train_models': 'success', 'evaluate_models': 'success'}
+| popularity_baseline | 0.2445 | 0.0826 | 0.2703 | 0.0440 | 0.7854 | 1.0366 | 0.8330 |
+| genre_content_recommender | 0.2476 | 0.0849 | 0.2740 | 0.0470 | 0.7617 | 1.1805 | 0.9573 |
+| biased_matrix_factorization | 0.2259 | 0.0701 | 0.2497 | 0.0957 | 0.7845 | 0.9723 | 0.7671 |
+2026-11-13 17:31:37,348 | INFO    | [evaluate_models] success in 0.17s
+2026-11-13 17:31:37,349 | INFO    | Workflow summary: {'record_run_metadata': 'success', 'ingest_data': 'success', 'validate_data': 'success', 'prepare_data': 'success', 'transform_data': 'success', 'build_features': 'success', 'train_models': 'success', 'evaluate_models': 'success'}

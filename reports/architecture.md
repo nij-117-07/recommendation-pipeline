@@ -5,7 +5,7 @@
 ```mermaid
 flowchart LR
     M[record_run_metadata<br/>config hash, seed, versions, git commit]
-    I[ingest_data<br/>CSV or synthetic + manifest]
+    I[ingest_data<br/>MovieLens CSV + manifest]
     V[validate_data<br/>rules, error datasets]
     P[prepare_data<br/>clean, dedupe, time split]
     T[transform_data<br/>activity, popularity, user-item matrix]
@@ -28,6 +28,7 @@ Both runners execute this same chain. The stage list is defined once in
 ```mermaid
 flowchart TB
     subgraph raw [data/raw]
+      ZIP[ml-100k.zip<br/>downloaded once]
       RU[users.csv]
       RI[items.csv]
       RX[interactions.csv]
@@ -53,6 +54,7 @@ flowchart TB
     MLF[(mlflow.db + mlruns/)]
     REP[reports/*]
 
+    ZIP -->|movielens.py converts| RU & RI & RX
     RU & RI & RX --> UV
     RU & RI & RX --> MF1
     UV --> ERR
@@ -79,7 +81,9 @@ flowchart TB
 
 - **No leakage:** the split is one global time cutoff. Every feature, popularity count and model
   is fitted on the training split only.
-- **Reproducibility:** a single seed drives synthetic data, model initialisation and SGD order.
+- **Source:** the raw CSVs come from the MovieLens 100K zip, converted by `src/ingestion/movielens.py`.
+  The synthetic generator is used only when `source` is removed from the config.
+- **Reproducibility:** a single seed drives model initialisation and SGD order.
   `reports/run_metadata.json` records the config hash and package versions for each run.
 - **Validation:** the future-timestamp rule uses `reference_date` from `configs/pipeline.json`,
   not the wall clock.

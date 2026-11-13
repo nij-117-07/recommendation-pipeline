@@ -1,6 +1,6 @@
 # Feature Catalog
 
-Reference time for time-based features: `2024-10-20 05:28:13+00:00` (last training timestamp).
+Reference time for time-based features: `1998-03-07 02:20:47+00:00` (last training timestamp).
 
 Features are computed from the training split only, to avoid leakage into the test period.
 
@@ -19,16 +19,16 @@ Features are computed from the training split only, to avoid leakage into the te
 | `interaction_hour_of_day` | interaction | int | train interactions | Hour (0-23 UTC) at which the interaction happened. |
 | `interaction_day_of_week` | interaction | int | train interactions | Day of week of the interaction (0 = Monday). |
 | `label_is_positive` | interaction | int | train interactions | Target label (not a model input): 1 if rating >= relevance threshold, else 0. |
-| `item_genre_<genre>` | item | int | items table | Multi-hot genre flag, one column per genre (10 columns: Action, Animation, Children, Comedy, Documentary, Drama, Horror, Romance, Sci-Fi, Thriller). |
+| `item_genre_<genre>` | item | int | items table | Multi-hot genre flag, one column per genre (19 columns: Action, Adventure, Animation, Children'S, Comedy, Crime, Documentary, Drama, Fantasy, Film-Noir, Horror, Musical, Mystery, Romance, Sci-Fi, Thriller, Unknown, War, Western). |
 | `user_genre_affinity_<genre>` | user | float | train interactions + item genres | Share of the user's positive training interactions (rating >= threshold) that fall in this genre. Shares sum to 1; 0 for users with no positive interactions. |
 
 ## Stored feature tables
 
 | File (data/features/) | Rows | Columns | Key |
 |---|---:|---:|---|
-| user_features.parquet | 792 | 14 | user_id |
-| item_features.parquet | 396 | 16 | item_id |
-| interaction_features.parquet | 43750 | 5 | (user_id, item_id) |
+| user_features.parquet | 943 | 23 | user_id |
+| item_features.parquet | 1682 | 25 | item_id |
+| interaction_features.parquet | 79999 | 5 | (user_id, item_id) |
 
-Cold-start users (no training history): 0
-Cold-start items (no training interactions): 0
+Cold-start users (no training history): 192
+Cold-start items (no training interactions): 66

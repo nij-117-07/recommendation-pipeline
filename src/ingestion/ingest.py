@@ -1,9 +1,11 @@
 """Stage 1: data ingestion.
 
 Reads users.csv, items.csv and interactions.csv from data/raw. If the files are
-missing, a synthetic MovieLens-style dataset is generated (seeded, reproducible)
-with deliberate data-quality problems so the validation stage has real errors
-to detect. Real CSV exports can be dropped into data/raw instead.
+missing, the source named in the config is used: "movielens" downloads MovieLens 100K
+and converts it (see movielens.py); otherwise a synthetic MovieLens-style dataset is
+generated (seeded, reproducible) with deliberate data-quality problems so the
+validation stage has real errors to detect. Real CSV exports can be dropped into
+data/raw instead.
 """
 
 import hashlib
@@ -13,6 +15,7 @@ import numpy as np
 import pandas as pd
 
 from src.common.config import RAW_DIR, ensure_dirs, get_logger
+from src.ingestion import movielens
 
 log = get_logger(__name__)
 
@@ -137,6 +140,8 @@ def run(cfg):
     ensure_dirs()
     if all((RAW_DIR / name).exists() for name in RAW_FILES):
         log.info("Using existing raw CSV files in %s", RAW_DIR)
+    elif cfg.get("source") == "movielens":
+        movielens.prepare_raw_files()
     else:
         generate_synthetic_dataset(cfg)
     manifest = _write_manifest()

@@ -1,19 +1,19 @@
 {
   "tables": {
     "users": {
-      "raw_rows": 808,
-      "valid_rows": 792,
-      "rejected_rows": 16
+      "raw_rows": 943,
+      "valid_rows": 943,
+      "rejected_rows": 0
     },
     "items": {
-      "raw_rows": 404,
-      "valid_rows": 396,
-      "rejected_rows": 8
+      "raw_rows": 1682,
+      "valid_rows": 1682,
+      "rejected_rows": 0
     },
     "interactions": {
-      "raw_rows": 60600,
-      "valid_rows": 54688,
-      "rejected_rows": 5912
+      "raw_rows": 100000,
+      "valid_rows": 100000,
+      "rejected_rows": 0
     }
   },
   "checks": [
@@ -33,7 +33,7 @@
       "table": "users",
       "check": "duplicate_user_id",
       "severity": "error",
-      "failed_rows": 8
+      "failed_rows": 0
     },
     {
       "table": "users",
@@ -45,13 +45,13 @@
       "table": "users",
       "check": "invalid_age_range",
       "severity": "error",
-      "failed_rows": 9
+      "failed_rows": 0
     },
     {
       "table": "users",
       "check": "missing_age",
       "severity": "warning",
-      "failed_rows": 8
+      "failed_rows": 0
     },
     {
       "table": "items",
@@ -69,13 +69,13 @@
       "table": "items",
       "check": "duplicate_item_id",
       "severity": "error",
-      "failed_rows": 4
+      "failed_rows": 0
     },
     {
       "table": "items",
       "check": "invalid_release_year_type",
       "severity": "error",
-      "failed_rows": 4
+      "failed_rows": 0
     },
     {
       "table": "items",
@@ -87,7 +87,7 @@
       "table": "items",
       "check": "missing_genres",
       "severity": "warning",
-      "failed_rows": 4
+      "failed_rows": 0
     },
     {
       "table": "interactions",
@@ -99,13 +99,13 @@
       "table": "interactions",
       "check": "missing_item_id",
       "severity": "error",
-      "failed_rows": 607
+      "failed_rows": 0
     },
     {
       "table": "interactions",
       "check": "missing_rating",
       "severity": "error",
-      "failed_rows": 608
+      "failed_rows": 0
     },
     {
       "table": "interactions",
@@ -129,19 +129,19 @@
       "table": "interactions",
       "check": "invalid_rating_type",
       "severity": "error",
-      "failed_rows": 604
+      "failed_rows": 0
     },
     {
       "table": "interactions",
       "check": "invalid_rating_value",
       "severity": "error",
-      "failed_rows": 609
+      "failed_rows": 0
     },
     {
       "table": "interactions",
       "check": "invalid_timestamp",
       "severity": "error",
-      "failed_rows": 605
+      "failed_rows": 0
     },
     {
       "table": "interactions",
@@ -153,25 +153,25 @@
       "table": "interactions",
       "check": "duplicate_record",
       "severity": "error",
-      "failed_rows": 600
+      "failed_rows": 0
     },
     {
       "table": "interactions",
       "check": "orphan_user_id",
       "severity": "error",
-      "failed_rows": 1204
+      "failed_rows": 0
     },
     {
       "table": "interactions",
       "check": "orphan_item_id",
       "severity": "error",
-      "failed_rows": 1213
+      "failed_rows": 0
     },
     {
       "table": "interactions",
       "check": "repeated_user_item_pair",
       "severity": "warning",
-      "failed_rows": 761
+      "failed_rows": 0
     }
   ]
 }

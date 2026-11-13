@@ -12,6 +12,7 @@ x-airflow-common: &airflow-common
     PYTHONPATH: /opt/airflow/pipeline
     MLFLOW_TRACKING_DB: /opt/airflow/pipeline/mlflow-airflow.db
     MLFLOW_ENABLE_ASYNC_LOGGING: "false"
+    AIRFLOW__CORE__EXECUTE_TASKS_NEW_PYTHON_INTERPRETER: "true"
   volumes:
     - .:/opt/airflow/pipeline
   depends_on: &airflow-depends
